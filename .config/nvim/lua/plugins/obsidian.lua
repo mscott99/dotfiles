@@ -29,6 +29,8 @@ return {
     keys = {
       { "[a", "<Plug>Markdown_MoveToPreviousHeader<CR>" },
       { "]a", "<Plug>Markdown_MoveToNextHeader<CR>" },
+      { "<leader>hi", "<cmd>'<,'>HeaderDecrease<cr>", mode = "v" },
+      { "<leader>hd", "<cmd>'<,'>HeaderIncrease<cr>", mode = "v" },
     },
     -- event="BufEnter *.md"
   },

@@ -1,7 +1,29 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 if true then return {
-
+  {
+    "folke/noice.nvim",
+    keys = {
+      { "<c-f>", false}, -- <c-f> already used by tmux sessionizer
+      { "<c-b>", function() if not require("noice.lsp").scroll(5) then return "<c-f>" end end, silent = true, expr = true, desc = "scroll forward", mode = {"i", "n", "s"} },
+    }
+  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   enabled = false
+  -- },
+  { "rcarriga/nvim-notify",
+    opts = {
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+      background_colour = "#000000",
+    }
+  },
   {
     "nvim-telescope/telescope.nvim",
     keys = {
@@ -36,17 +58,28 @@ if true then return {
   -- },
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
+    dependencies = { "hrsh7th/cmp-emoji", "hrsh7th/cmp-omni" },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      -- { name = "buffer" },
-      { name = "path" },
-      {name = "emoji"}
-    })
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        -- { name = "buffer" },
+        { name = "path" },
+        {name = "emoji"},
+        {name = "omni"}
+      })
+      opts.formatting = {
+        format = function(entry, vim_item)
+            vim_item.menu = ({
+              omni = (vim.inspect(vim_item.menu):gsub('%"', "")),
+              buffer = "[Buffer]",
+              -- formatting for other sources
+              })[entry.source.name]
+            return vim_item
+          end,
+      }
     -- cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
     end,
   },
@@ -59,6 +92,7 @@ if true then return {
         "lua",
         "markdown",
         "markdown_inline",
+        "julia",
         "python",
         "query",
         "regex",

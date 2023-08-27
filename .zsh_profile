@@ -1,0 +1,24 @@
+bindkey -v
+bindkey -s ^f "tmux-sessionizer\n"
+
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+addToPathFront "$HOME/.local/bin/"
+
+alias python=python3
+alias pip=pip3
+
+export CC_PROJECTS_PATH=/home/mscott99/projects/def-oyilmaz/mscott99
+
+# Good colors in tmux
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+# start tmux right away
+if [[ -z "$TMUX" ]]
+then
+  tmux attach -t TMUX || tmux new -s TMUX
+fi
