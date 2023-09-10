@@ -1,8 +1,4 @@
 return {
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   opts = { history = true, updateevents = "TextChanged,TextChangedI", enable_autosnippets = true },
-  -- },
   {
     "rafamadriz/friendly-snippets",
     enabled = false,

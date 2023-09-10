@@ -1,5 +1,5 @@
 
-ctrl + 1 : yabai -m space --focus 1
+# ctrl + 1 : yabai -m space --focus 1
 
 # # change window focus within space
 # alt - j : yabai -m window --focus south
