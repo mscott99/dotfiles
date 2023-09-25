@@ -2,6 +2,14 @@
 -- stylua: ignore
 return {
 
+  -- add pyright to lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      autoformat = false,
+    },
+  },
   -- change trouble config
   {
     "folke/trouble.nvim",

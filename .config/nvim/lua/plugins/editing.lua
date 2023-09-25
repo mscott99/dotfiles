@@ -1,9 +1,18 @@
 return {
   {
+    "zbirenbaum/copilot.lua",
+    opts = {
+      filetypes = {
+        markdown = false,
+      },
+    },
+  },
+  {
     "lervag/vimtex",
     enabled = true,
     keys = {
       { "<leader>vc", "<cmd>VimtexCompile<CR>", desc = "Compile tex document" },
+      { "<leader>vt", "<cmd>VimtexTocOpen<CR>", desc = "Latex Table of Contents" },
     },
   },
   {
@@ -42,6 +51,8 @@ return {
       vim.cmd([[
         let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
         let g:sandwich#recipes += [{'buns': ['\|', '\|'], 'input':['n']}]
+        let g:sandwich#recipes += [{'buns': ['\{', '\}'], 'input':['s']}]
+        let g:sandwich#recipes += [{'buns': ['\left\{', '\right\}'], 'input':['S']}]
         let g:sandwich#recipes += [{'buns': ['\left\|', '\right\|'], 'input':['N']}]
         let g:sandwich#recipes += [{'buns': ["[[", "]\]"], 'input':['w']}]
         let g:sandwich#recipes += [{'buns': ['\langle ', '\rangle '], 'input':['<']}]

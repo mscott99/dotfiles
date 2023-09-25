@@ -25,6 +25,12 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 
 map({ "v", "n" }, "H", "^") -- Make H for alternate file
 
+-- Move to window using the <ctrl> hjkl keys
+map({ "n", "i" }, "<C-h>", "<Esc><C-w>h", { desc = "Go to left window", remap = true })
+map({ "n", "i" }, "<C-j>", "<Esc><C-w>j", { desc = "Go to lower window", remap = true })
+map({ "n", "i" }, "<C-k>", "<Esc><C-w>k", { desc = "Go to upper window", remap = true })
+map({ "n", "i" }, "<C-l>", "<Esc><C-w>l", { desc = "Go to right window", remap = true })
+
 vim.keymap.set({ "x", "v" }, "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
