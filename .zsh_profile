@@ -12,7 +12,7 @@ addToPathFront "$HOME/.local/bin/"
 alias python=python3
 alias pip=pip3
 
-export CC_PROJECTS_PATH=/home/mscott99/projects/def-oyilmaz/mscott99
+export CC_HOME=/home/mscott99/projects/def-oyilmaz/mscott99
 
 # Good colors in tmux
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
@@ -22,3 +22,6 @@ if [[ -z "$TMUX" ]]
 then
   tmux attach -t TMUX || tmux new -s TMUX
 fi
+/opt/homebrew/etc/profile.d/z.sh
+alias ls="lsd"
+export CC_BASE=/home/mscott99

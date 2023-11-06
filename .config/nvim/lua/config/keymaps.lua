@@ -17,13 +17,15 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Some primagen shortcuts
-map({ "i" }, "jk", "<Esc>")
 map({ "n", "x", "v" }, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Go to another tmux place." })
 map({ "v" }, "J", "mzJ`z")
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map("x", "J", ":m '>+1<CR>gv=gv")
+map("x", "K", ":m '<-2<CR>gv=gv")
 
-map({ "v", "n" }, "H", "^") -- Make H for alternate file
+map({ "x", "n" }, "H", "^") -- Make H for alternate file
+
+map("n", "<leader>cn", [[<cmd>let @+ = expand("%")<CR>]], { desc = "[C]opy file [N]ame"})
+map("n", "<leader>cp", [[<cmd>let @+ = expand("%:p")<CR>]], { desc = "[C]opy [P]ath"})
 
 -- Move to window using the <ctrl> hjkl keys
 map({ "n", "i" }, "<C-h>", "<Esc><C-w>h", { desc = "Go to left window", remap = true })
@@ -39,6 +41,9 @@ vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
 vim.keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
 vim.keymap.set({ "n", "v" }, "n", "nzzzv")
 vim.keymap.set({ "n", "v" }, "N", "Nzzzv")
+
+-- vim.keymap.set({"i"}, "<C-o>", "<right>")
+-- Find another key for this?
 
 local ui = require("harpoon.ui")
 map("n", "<leader>j", function()

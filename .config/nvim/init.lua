@@ -8,4 +8,4 @@ vim.cmd([[filetype plugin on
       let g:vim_markdown_conceal = 2
       let g:vim_markdown_math = 1
 ]])
-vim.g.lua_snippets_path = vim.fn.stdpath("config") .. "/snippets/"
+-- vim.g.lua_snippets_path = vim.fn.stdpath("config") .. "/luasnippets/"

@@ -1,2 +1,21 @@
-.config/github-copilot/hosts.json
-.config/raycast
+.DS_Store
+*.icloud
+*.swp
+
+# Latex builds
+*.eps
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lop
+*.lot
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.bcf
+*.run.xml
+*.synctex*

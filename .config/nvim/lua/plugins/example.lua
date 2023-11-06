@@ -73,6 +73,8 @@ return {
         function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
         desc = "Find Plugin File",
       },
+      {"<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>"},
+      {"<leader>sS", "<cmd>Telescope lsp_workspace_symbols<CR>"}
     },
     -- change some options
     opts = {

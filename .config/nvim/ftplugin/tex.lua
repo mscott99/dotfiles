@@ -1,0 +1,1 @@
+-- require("nvim-surround").buffer_setup(require("scripts.surround_functions").tex)
