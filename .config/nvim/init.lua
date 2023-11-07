@@ -1,6 +1,8 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+require("export.export_obsidian")
+
 vim.cmd([[filetype plugin on
       set noswapfile
       " let g:lua_snippets_path=$XDG_CONFIG_HOME""/snippets/"
