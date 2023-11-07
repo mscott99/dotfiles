@@ -7,19 +7,19 @@ return {
       -- need to remove the -g to get the viewer to show up. Otherwise open manually
       -- local executable = "/Applications/Skim.app/Contents/SharedSupport/displayline -g"
       local executable = "/Applications/Skim.app/Contents/SharedSupport/displayline"
-      local args = {"-g", "%l", "%p", "%f" }
+      local args = { "-g", "%l", "%p", "%f" }
 
       lspconfig.texlab.setup({
         settings = {
           texlab = {
-            build = { 
-              onSave = true, 
+            build = {
+              onSave = true,
               forwardSearchAfter = true,
               -- args = { "-pdf", "-pvc", "-interaction=nonstopmode", "-synctex=1", "%f" },
               -- args = { "-pdf", "-interaction=nonstopmode", "-synctex=0", "%f" },
             },
             forwardSearch = {
-              -- add the line 
+              -- add the line
               executable = executable,
               args = args,
             },
@@ -29,13 +29,13 @@ return {
     end,
     ft = { "tex", "bib" }, -- Lazy-load on filetype
     -- build = "go build",
-    build = 'go build -o ~/.local/bin/' -- if e.g. ~/.bin/ is in $PATH
+    build = "go build -o ~/.local/bin/", -- if e.g. ~/.bin/ is in $PATH
   },
   {
-    'KeitaNakamura/tex-conceal.vim',
+    "KeitaNakamura/tex-conceal.vim",
     enabled = false,
     config = function()
-    vim.cmd([[
+      vim.cmd([[
       let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
       let g:tex_subscripts= "[0-9abcdefgijoqruvwxyzABCDEFGHIJKLMNOQRSTUVWXYZ,+-/().]"
       let g:tex_conceal="abdgm"
@@ -45,9 +45,10 @@ return {
     end,
   },
   {
-    "lervag/vimtex",
+    "lervag/vimtex", -- vimtex provides the conceal and checks in math for tex snippets.
     enabled = true,
-    event = "BufEnter *.tex",
+    event = "VeryLazy",
+    -- event = "BufEnter *.tex *.md",
     -- tag= "v1.6",
     keys = {
       { "<leader>vc", "<cmd>VimtexCompile<CR>", desc = "Compile tex document" },
@@ -60,6 +61,7 @@ return {
       vim.g.vimtex_view_skim_activate = 0 -- do not change focus
       vim.cmd([[
   nnoremap <leader>vv :call vimtex#fzf#run()<cr>
+  syntax enable
   ]])
 
       vim.cmd([[let g:vimtex_compiler_latexmk = {

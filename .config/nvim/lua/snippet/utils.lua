@@ -77,7 +77,7 @@ local function check_in_mathzone()
   return false
 end
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "BufNew", "BufEnter", "BufWinEnter" }, {
   pattern = { "*.md", "*.tex" },
   callback = function()
     if not vim.b.tracking_math then

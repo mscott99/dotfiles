@@ -14,6 +14,14 @@ local rep = require("luasnip.extras").rep
 return function(is_math, not_math)
   return {
     s(
+      { trig = "Rn", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
+      { t("\\mathbb{R}^n") }
+    ),
+    s(
+      { trig = "Rk", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
+      { t("\\mathbb{R}^k") }
+    ),
+    s(
       { trig = "iff", condition = is_math, wordTrig = true, priority = 1100, snippetType = "autosnippet" },
       { t("\\iff") }
     ),

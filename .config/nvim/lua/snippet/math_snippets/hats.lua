@@ -28,6 +28,10 @@ local hats = {
     tex = "hat",
   },
   {
+    trig = "tt",
+    tex = "text",
+  },
+  {
     trig = "bb",
     tex = "mathbb",
   },
