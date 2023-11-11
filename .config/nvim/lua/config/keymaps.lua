@@ -33,6 +33,8 @@ map({ "n", "i" }, "<C-j>", "<Esc><C-w>j", { desc = "Go to lower window", remap =
 map({ "n", "i" }, "<C-k>", "<Esc><C-w>k", { desc = "Go to upper window", remap = true })
 map({ "n", "i" }, "<C-l>", "<Esc><C-w>l", { desc = "Go to right window", remap = true })
 
+map( "n" , "<leader>oe", Export_Longform, { desc = "Obsidian Export", remap = true })
+
 vim.keymap.set({ "x", "v" }, "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -42,6 +44,13 @@ vim.keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
 vim.keymap.set({ "n", "v" }, "n", "nzzzv")
 vim.keymap.set({ "n", "v" }, "N", "Nzzzv")
 
+--debug
+-- start server in debugee
+map("n", "<leader>dd", [[:lua require"osv".launch({port = 8086})<CR>]], {desc = "start server in debugee"})
+
+--
+--
+--
 -- vim.keymap.set({"i"}, "<C-o>", "<right>")
 -- Find another key for this?
 

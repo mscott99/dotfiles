@@ -9,6 +9,7 @@ local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
+local get_visual = require("snippet.utils").get_visual
 
 return function(is_math, not_math)
   return {
@@ -26,7 +27,7 @@ return function(is_math, not_math)
         dscr = "fraction (general)",
         snippetType = "autosnippet",
       },
-      fmta([[\frac{<>}{<>}]], { i(1, "a"), i(2, "b") })
+      fmta([[\frac{<>}{<>}]], { d(1, get_visual), i(2, "b") })
     ),
     s(
       {
@@ -52,28 +53,6 @@ return function(is_math, not_math)
         }
       )
     ),
-    -- s(
-    --   {
-    --     trig = "$(%a+)ff",
-    --     name = "fraction",
-    --     dscr = "auto fraction 1",
-    --     regTrig = true,
-    --     hidden = true,
-    --     snippetType = "autosnippet",
-    --     condition = is_math,
-    --   },
-    --   fmta(
-    --     [[
-    -- \frac{<>}{<>}<>
-    -- ]],
-    --     { f(function(_, snip)
-    --       return snip.captures[1]
-    --     end), i(1), i(0) }
-    --   ),
-    --   {
-    --     -- condition = is_math, show_condition = is_math
-    --   }
-    -- ),
     s(
       {
         trig = "([^%$%(%)%[%]{} |]+)ff",
@@ -98,11 +77,3 @@ return function(is_math, not_math)
     ),
   }
 end
--- s({trig="test", filetype="tex"},
---   {t("hello")}
---   ),
--- autosnippets
--- s("test",
--- {t("hello")}
--- ),
--- table.insert(autosnippets,ls.parser.parse_snippet({trig = "//", wordtrig=true, name = "fraction", dscr = "fraction (general)", condition = is_math_markdown}, [[\frac{1:a}{2:b}]]))

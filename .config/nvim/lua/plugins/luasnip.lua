@@ -5,16 +5,15 @@ return {
   },
   {
     "L3MON4D3/LuaSnip",
-    keys = function()
-      return {} -- let supertab deal with it
-    end,
     config = function()
       require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/luasnippets/" })
-      require("luasnip").config.setup({ enable_autosnippets = true,
+      -- reload will not work because I store my snippets in a different file, the module would have to be reloaded.
+      require("luasnip").config.setup({
+        enable_autosnippets = true,
         link_children = true,
-
+        store_selection_keys = "<Tab>",
       })
-      vim.cmd[[sunmap n]]
+      vim.cmd([[sunmap n]])
       -- improvement; load math snippets for the right file types.
       -- load_ft_func = function(bufnr)
       --   if bufnr == "markdown" then

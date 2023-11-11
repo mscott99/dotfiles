@@ -33,9 +33,9 @@ return function(is_math, not_math)
       { trig = "simplex", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
       { t("\\Delta^{${1:n}-1}$0") }
     ),
-    s({ trig = "inn", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\in") }),
-    s({ trig = "wtn", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\subseteq") }),
-    s({ trig = "cnt", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\supseteq") }),
+    s({ trig = "in", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\in") }),
+    s({ trig = "wt", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\subseteq") }),
+    s({ trig = "ct", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\supseteq") }),
     s(
       { trig = "normal", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
       { t("\\mathcal{N}(0, I)") }
@@ -51,7 +51,7 @@ return function(is_math, not_math)
 
     s({ trig = "sq", priority = 900, condition = is_math, snippetType = "autosnippet" }, fmta("\\sqrt{<>}", { i(1) })),
     s(
-      { trig = [[([^ %[({\<'])sq]], regTrig = true, wordTrig = false, condition = is_math, snippetType = "autosnippet" },
+      { trig = [[([^ %[({\<'%$])sq]], regTrig = true, wordTrig = false, condition = is_math, snippetType = "autosnippet" },
       { f(function(_, snip)
         return snip.captures[1] .. "^2"
       end) }
@@ -81,14 +81,14 @@ return function(is_math, not_math)
     --     end),}
     -- ),
     s(
-      { trig = "([^ %d%p{([]+)([*])", regTrig = true, priority = 300, condition = is_math, snippetType = "autosnippet" },
+      { trig = "([^ %d%p{([]+)([*T])", regTrig = true, priority = 300, condition = is_math, snippetType = "autosnippet" },
       { f(function(_, snip)
         return snip.captures[1] .. "^" .. snip.captures[2]
       end) }
     ),
     s(
       { trig = "sum", wordTrig = false, condition = is_math, snippetType = "autosnippet" },
-      fmta([[\sum_{<>}^<> ]], { i(1, "i=1"), i(2, "m") })
+      fmta([[\sum_{<> = <>}^<> ]], { i(1, "i"), i(2, "1"), i(3, "n") })
     ),
 
     s(

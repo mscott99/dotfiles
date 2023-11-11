@@ -1,6 +1,7 @@
 local my_settings = {
   export_folder = "/Users/matthewscott/Documents/auto_exports/",
   template_path = "/Users/matthewscott/.config/export_obsidian/template.tex",
+  supporting_docs_dir = "/Users/matthewscott/.config/export_obsidian/supporting_docs/",
   julia_main_file_path = "/Users/matthewscott/Prog/Obsidian-Paper-Export/src/main.jl",
 }
 
@@ -25,6 +26,9 @@ new_dir, dir, file_name, new_dir
   config_file:close()
 
   vim.cmd("!cp ".. my_settings.template_path .. " " .. new_dir)
+  vim.cmd("!mkdir" .. new_dir .. "output")
+
+  vim.cmd("!cp ".. my_settings.supporting_docs_dir .. "* " .. new_dir .. "output/")
 
   local export_executable = io.open(new_dir .. "export.zsh", "w+")
   assert(export_executable ~= nil, "could not create export.zsh")
@@ -40,7 +44,6 @@ my_settings.julia_main_file_path, new_dir))
   export_executable:close()
   vim.cmd("!chmod +x " .. new_dir .. "export.zsh")
 
-  vim.cmd("!mkdir" .. new_dir .. "output")
   local tmpfile = os.tmpname()
   vim.cmd("! " .. new_dir .. "export.zsh > " .. tmpfile)
   -- local output = os.execute(new_dir .. "export.zsh")

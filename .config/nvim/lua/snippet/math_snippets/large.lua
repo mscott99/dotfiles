@@ -30,9 +30,32 @@ return function(is_math, not_math)
     ),
     s(
       { trig = "vecs", wordTrig = true, name = "vectors", condition = not_math },
-      fmta([[$<>_1, \ldots, <>_<>$]], { i(1, "a"), rep(1), i(2, "l")})
+      fmta([[$<>_<>, \ldots, <>_<> \in <>$]], { i(1, "a"), i(2, "1"), rep(1), i(3, "l"), i(4, "\\mathbb{R}^n") })
     ),
+    s(
+      { trig = "matrix", wordTrig = true, name = "matrix definition", condition = not_math },
+      fmta([[$<> \in <>^{<> \times <>}$]], { i(1, "M"), i(2, "\\mathbb{R}"), i(3, "m"), i(4, "n") })
+    ),
+    s(
+      { trig = "fni", wordTrig = true, name = "inline function definition", condition = not_math },
+      fmta([[$<>:<> \to <>, <> \mapsto <>$]], { i(1, "f"), i(2, "\\mathbb{R}^n"), i(3, "\\mathbb{R}"), i(4, "x"), i(5, "x^2")})
+    ),
+    s(
+      { trig = "fnd", wordTrig = true, name = "display function definition", condition = not_math },
+      fmta([[
+$$
+<> \colon \biggl\{\begin{align*}
+    <>  &\to <>,\\
+    <> &\mapsto <>
+\end{align*}
+$$
 
+]], { i(1, "f"), i(2, "\\mathbb{R}^n"), i(3, "\\mathbb{R}"), i(4, "x"), i(5, "x^2")})
+    ),
+    s(
+      { trig = "set", wordTrig = true, name = "set def", condition = not_math },
+      fmta([[$<> \subseteq <>^<>$]], { i(1, "S"), i(2, "\\mathbb{R}"), i(3, "n")})
+    ),
     s(
       { trig = "comb", wordTrig = true, name = "Linear interpolation", condition = is_math },
       { i(1, "\\alpha"), t(" "), i(2, "x"), t(" + (1 - "), rep(1), t(") "), i(3, "y") }
@@ -47,7 +70,7 @@ return function(is_math, not_math)
       fmta(
         [[\begin{<>
    <>
-\end{<>}]],
+\end<>]],
         { i(1), i(2), rep(1) }
       )
     ),
