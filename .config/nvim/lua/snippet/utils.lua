@@ -5,19 +5,19 @@ local sn = ls.snippet_node
 local i = ls.insert_node
 
 function M.get_visual(args, parent) -- use with dynamic node d(1, get_visual)
-  if (#parent.snippet.env.LS_SELECT_RAW > 0) then
+  if #parent.snippet.env.LS_SELECT_RAW > 0 then
     return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
-  else  -- If LS_SELECT_RAW is empty, return a blank insert node
+  else -- If LS_SELECT_RAW is empty, return a blank insert node
     return sn(nil, i(1))
   end
 end
 
 function M.map(tbl, f)
-    local t = {}
-    for k,v in pairs(tbl) do
-        t[k] = f(v)
-    end
-    return t
+  local t = {}
+  for k, v in pairs(tbl) do
+    t[k] = f(v)
+  end
+  return t
 end
 
 function M.concat(tables)
@@ -35,9 +35,11 @@ local function check_in_mathzone()
   col = col - 1
   parser = ts.get_parser(buf)
   parser:parse()
-  if #parser:children()> 0 and
-    #parser:children()["markdown_inline"]:children() > 0 and
-  parser:children()["markdown_inline"]:children()["latex"]:contains({row,col, row, col}) then
+  if
+    parser:children()["markdown_inline"] ~= nil
+    and parser:children()["markdown_inline"]:children()["latex"] ~= nil
+    and parser:children()["markdown_inline"]:children()["latex"]:contains({ row, col, row, col })
+  then
     return true
   else
     return false
@@ -79,4 +81,3 @@ function M.not_in_tex_mathzone()
 end
 
 return M
-
