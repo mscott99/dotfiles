@@ -13,7 +13,7 @@ local rep = require("luasnip.extras").rep
 return function(is_math, not_math)
   return {
     s(
-      { trig = "align", wordTrig = true, name = "align", condition = not_math},
+      { trig = "align", wordTrig = true, name = "align", snippetType = "autosnippet", condition = not_math},
       { t({"$$", "\\begin{"}), i(1, "align*"), t({"}", "  "}), i(2, " "), t({"", "\\end{"}), rep(1), t({"}", "$$"})}
     ),
     s(

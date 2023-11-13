@@ -1,6 +1,8 @@
 bindkey -v
 bindkey -s ^f "tmux-sessionizer\n"
 
+eval "$(zoxide init --cmd cd zsh)"
+
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$1:$PATH

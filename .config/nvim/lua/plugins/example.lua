@@ -6,9 +6,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
-    opts = {
-      autoformat = false,
-    },
+    config = function ()
+        vim.g.autoformat = false
+    end,
   },
   -- change trouble config
   {

@@ -12,6 +12,8 @@ return {
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
         -- main content is found in scripts/surround_functions.lua and ftplugin files.
+        surrounds = {
+        }
       })
     end,
   },
@@ -47,12 +49,15 @@ return {
       ]])
       vim.cmd([[
         let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+        let g:sandwich#recipes += [{'buns': ['\left(', '\right)'], 'input':['P']}]
+        let g:sandwich#recipes += [{'buns': ['\left[', '\right]'], 'input':['B']}]
         let g:sandwich#recipes += [{'buns': ['\|', '\|'], 'input':['n']}]
         let g:sandwich#recipes += [{'buns': ['\{', '\}'], 'input':['s']}]
         let g:sandwich#recipes += [{'buns': ['\left\{', '\right\}'], 'input':['S']}]
         let g:sandwich#recipes += [{'buns': ['\left\|', '\right\|'], 'input':['N']}]
         let g:sandwich#recipes += [{'buns': ["[[", "]\]"], 'input':['w']}]
-        let g:sandwich#recipes += [{'buns': ['\langle ', '\rangle '], 'input':['<']}]
+        let g:sandwich#recipes += [{'buns': ['\langle ', '\rangle '], 'input':['a']}]
+        let g:sandwich#recipes += [{'buns': ['\left\langle ', '\right\rangle'], 'input':['A']}]
       ]])
     end,
   },

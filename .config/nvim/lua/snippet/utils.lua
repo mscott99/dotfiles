@@ -35,7 +35,13 @@ local function check_in_mathzone()
   col = col - 1
   parser = ts.get_parser(buf)
   parser:parse()
-  return parser:children()["markdown_inline"]:children()["latex"]:contains({row,col, row, col})
+  if #parser:children()> 0 and
+    #parser:children()["markdown_inline"]:children() > 0 and
+  parser:children()["markdown_inline"]:children()["latex"]:contains({row,col, row, col}) then
+    return true
+  else
+    return false
+  end
 end
 
 -- -- caching, but maybe not necessary
