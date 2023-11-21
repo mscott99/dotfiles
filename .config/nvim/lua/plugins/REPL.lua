@@ -11,7 +11,7 @@ return {
     "kassio/neoterm",
     -- event = "VeryLazy",
     -- ft = { "python", "julia" },
-    event = "BufEnter *.jl",
+    -- event = "BufEnter *.jl",
     -- this next line breaks lua syntax highlighting, but is needed for it to work.
     -- ft = { "julia" },
     config = function()

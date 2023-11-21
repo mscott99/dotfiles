@@ -11,6 +11,9 @@ addToPathFront() {
 
 addToPathFront "$HOME/.local/bin/"
 
+export WSL_COMMAND="\"& 'C:\\Program Files\\WSL\\wsl.exe'\""
+alias ssh_wsl="ssh -t ngan $WSL_COMMAND"
+alias ssh_wsl_public="ssh -t ngan_public $WSL_COMMAND"
 alias python=python3
 alias pip=pip3
 
@@ -24,6 +27,6 @@ if [[ -z "$TMUX" ]]
 then
   tmux attach -t TMUX || tmux new -s TMUX
 fi
-/opt/homebrew/etc/profile.d/z.sh
+
 alias ls="lsd"
 export CC_BASE=/home/mscott99
