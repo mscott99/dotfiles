@@ -33,8 +33,10 @@ return function(is_math, not_math)
       { trig = "simplex", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
       { t("\\Delta^{${1:n}-1}$0") }
     ),
-    s({ trig = "in", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\in") }),
+    s({ trig = "inn", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\in") }),
     s({ trig = "wt", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\subseteq") }),
+    s({ trig = "apx", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\approx") }),
+    s({ trig = "imp", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\implies") }),
     s({ trig = "ct", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\supseteq") }),
     s(
       { trig = "normal", condition = is_math, wordTrig = true, snippetType = "autosnippet" },

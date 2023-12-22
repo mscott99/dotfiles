@@ -9,24 +9,26 @@ local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
+local get_visual = require("snippet.utils").get_visual
 
+-- important note: snippets cannot remove newlines, it breaks treesitter inside of envs.
 return function(is_math, not_math)
   return {
     s(
-      { trig = "align", wordTrig = true, name = "align", snippetType = "autosnippet", condition = not_math},
-      { t({"$$", "\\begin{"}), i(1, "align*"), t({"}", "  "}), i(2, " "), t({"", "\\end{"}), rep(1), t({"}", "$$"})}
+      { trig = "align", wordTrig = true, name = "align", condition = not_math},
+      { t({"$$", "\\begin{"}), i(1, "align*"), t({"}"}), i(2, " "), t({"  "}), i(3, " "), t({"", "\\end{"}), rep(1), t({"}", "$$"})}
     ),
     s(
-      { trig = "fal", wordTrig = true, name = "first align", describe = "[F]irst [Al]ign", condition = is_math, snippetType = "autosnippet"},
-      { i(1, "A"), t(" &"), i(2, "="), t(" "), i(3, "B"), t({" \\\\", ""})}
+      { trig = "fal", wordTrig = true, name = "first align", describe = "[F]irst [Al]ign", condition = is_math, snippettype= "autosnippet"},
+      { i(1, "A"), t(" &"), i(2, "="), t(" "), i(3, "B"), t(" \\\\")}
     ),
     s(
-      { trig = "nal", wordTrig = true, name = "next align", describe = "[F]irst [Al]ign", condition = is_math, snippetType = "autosnippet"},
-      { t(" &"), i(1, "="), t(" "), i(2, "B"), t({" \\\\", ""})}
+      { trig = "nal", wordTrig = true, name = "next align", describe = "[F]irst [Al]ign", condition = is_math, snippettype= "autosnippet"},
+      { t(" &"), i(1, "="), t(" "), i(2, "B"), t(" \\\\")}
     ),
     s(
       { trig = "int", wordTrig = true, name = "integral", condition = is_math },
-      fmta([[\int_{<>}^{<>} <> d<>]], { i(1, "x=0"), i(2, "\\infty"), i(3, "f(x)"), i(4, "x") })
+      fmta([[\int_{<>}^{<>} <> d<>]], { i(1, "x=0"), i(2, "\\infty"), d(3, get_visual), i(4, "x") })
     ),
     s(
       { trig = "vecs", wordTrig = true, name = "vectors", condition = not_math },

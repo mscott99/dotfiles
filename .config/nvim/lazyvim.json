@@ -1,5 +1,7 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.lang.python-semshi",
     "lazyvim.plugins.extras.lang.tex"
   ],
   "news": {

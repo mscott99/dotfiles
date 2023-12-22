@@ -3,6 +3,8 @@ require("config.lazy")
 
 require("export.export_obsidian")
 
+vim.g.autoformat = false
+
 vim.cmd([[filetype plugin on
       set noswapfile
       " let g:lua_snippets_path=$XDG_CONFIG_HOME""/snippets/"

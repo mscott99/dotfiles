@@ -1,13 +1,14 @@
 return {
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = true,
-    opts = {
-      filetypes = {
-        markdown = false,
-      },
-    },
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "VeryLazy",
+  --   enabled = true,
+  --   -- opts = {
+  --   --   filetypes = {
+  --   --     markdown = false,
+  --   --   },
+  --   -- },
+  -- },
   {
     'mbbill/undotree',
     cmd="UndotreeToggle",

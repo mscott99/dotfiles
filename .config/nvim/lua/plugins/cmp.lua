@@ -53,7 +53,7 @@ return {
         { name = "path" },
         { name = "emoji" },
         { name = "omni" },
-        { name = "copilot" },
+        { name = "copilot"},
       })
       opts.formatting = {
         format = function(entry, vim_item)

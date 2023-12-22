@@ -5,10 +5,45 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    config = function ()
-        vim.g.autoformat = false
-    end,
+    -- config = function(_, opts)
+    --   vim.g.autoformat = false
+    -- end,
+    opts = {
+      servers = {
+        pyright = {},
+        ruff_lsp = {
+          keys = {
+            {
+              "<leader>co",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Organize Imports",
+            },
+          },
+        },
+      },
+      setup = {
+        ruff_lsp = function()
+          require("lazyvim.util").lsp.on_attach(function(client, _)
+            if client.name == "ruff_lsp" then
+              -- Disable hover in favor of Pyright
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
+      },
+    },
+    -- ---@class PluginLspOpts
+    -- config = function ()
+    --     vim.g.autoformat = false
+    -- end,
   },
   -- change trouble config
   {
@@ -62,30 +97,6 @@ return {
       background_colour = "#000000",
     }
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
-      {"<leader>/", false},
-      {
-        "<leader>fp",
-        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-        desc = "Find Plugin File",
-      },
-      {"<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>"},
-      {"<leader>sS", "<cmd>Telescope lsp_workspace_symbols<CR>"}
-    },
-    -- change some options
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-      },
-    },
-  },
   -- {
   --   "folke/tokyonight.nvim",
   --   opts = {
@@ -134,6 +145,9 @@ return {
         "markdown_inline",
         "julia",
         "python",
+        "ninja",
+        "rst",
+        "toml",
         "query",
         "regex",
         "tsx",

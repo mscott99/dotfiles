@@ -1,7 +1,7 @@
 window:
   opacity: 1.0
 font:
-  size: 16.4
+  size: 17
 # shell:
 #   program: /opt/homebrew/bin/tmux # <- set this to the path of your tmux installation
 #   args:

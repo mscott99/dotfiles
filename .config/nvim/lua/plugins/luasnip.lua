@@ -10,7 +10,7 @@ return {
       -- reload will not work because I store my snippets in a different file, the module would have to be reloaded.
       require("luasnip").config.setup({
         enable_autosnippets = true,
-        link_children = true,
+        link_children = true, --autosnippets do not expand withing snippets
         store_selection_keys = "<Tab>",
       })
       vim.cmd([[sunmap n]])

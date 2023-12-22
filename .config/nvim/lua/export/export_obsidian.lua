@@ -26,7 +26,7 @@ new_dir, dir, file_name, new_dir
   config_file:close()
 
   vim.cmd("!cp ".. my_settings.template_path .. " " .. new_dir)
-  vim.cmd("!mkdir" .. new_dir .. "output")
+  vim.cmd("!mkdir " .. new_dir .. "output")
 
   vim.cmd("!cp ".. my_settings.supporting_docs_dir .. "* " .. new_dir .. "output/")
 
