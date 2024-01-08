@@ -19,3 +19,6 @@
 *.bcf
 *.run.xml
 *.synctex*
+.config/github-copilot
+.config/configstore
+.config/raycast/extensions

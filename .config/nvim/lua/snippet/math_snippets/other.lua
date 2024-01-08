@@ -49,6 +49,7 @@ return function(is_math, not_math)
     s({ trig = "geq", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\ge") }),
     s({ trig = [[__]], wordTrig = false, condition = is_math, snippetType = "autosnippet" }, fmta("_{<>}", { i(1) })),
     s({ trig = "^^", wordTrig = false, condition = is_math, snippetType = "autosnippet" }, fmta("^{<>}", { i(1) })),
+    s({ trig = "ldot", wordTrig = false, prority = 1000,  condition = is_math, snippetType = "autosnippet" }, { t("\\ldots") }),
     s({ trig = "dot", wordTrig = false, condition = is_math, snippetType = "autosnippet" }, { t("\\cdot") }),
 
     s({ trig = "sq", priority = 900, condition = is_math, snippetType = "autosnippet" }, fmta("\\sqrt{<>}", { i(1) })),

@@ -10,13 +10,14 @@ local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 local get_visual = require("snippet.utils").get_visual
+local get_prev_align_line = require("snippet.utils").get_prev_align_line
 
 -- important note: snippets cannot remove newlines, it breaks treesitter inside of envs.
 return function(is_math, not_math)
   return {
     s(
       { trig = "align", wordTrig = true, name = "align", condition = not_math},
-      { t({"$$", "\\begin{"}), i(1, "align*"), t({"}"}), i(2, " "), t({"  "}), i(3, " "), t({"", "\\end{"}), rep(1), t({"}", "$$"})}
+      { t({"$$", "\\begin{"}), i(1, "align*"), t({"}", ""}), t("  "), i(2), t({"", "\\end{"}), rep(1), t({"}", "$$", ""})}
     ),
     s(
       { trig = "fal", wordTrig = true, name = "first align", describe = "[F]irst [Al]ign", condition = is_math, snippettype= "autosnippet"},
@@ -24,7 +25,7 @@ return function(is_math, not_math)
     ),
     s(
       { trig = "nal", wordTrig = true, name = "next align", describe = "[F]irst [Al]ign", condition = is_math, snippettype= "autosnippet"},
-      { t(" &"), i(1, "="), t(" "), i(2, "B"), t(" \\\\")}
+      { t(" &"), i(1, "="), t(" "), d(2, get_prev_align_line ), t("\\\\")}
     ),
     s(
       { trig = "int", wordTrig = true, name = "integral", condition = is_math },

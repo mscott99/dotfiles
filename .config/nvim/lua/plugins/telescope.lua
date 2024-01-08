@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local telescopeConfig = require("telescope.config")
+local Util = require("lazyvim.util")
 
 -- Clone the default Telescope configuration
 local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -24,6 +25,22 @@ return {
       },
       { "<leader>ss", "<cmd>Telescope lsp_document_symbols<CR>" },
       { "<leader>sS", "<cmd>Telescope lsp_workspace_symbols<CR>" },
+      {
+        "<leader>fc",
+        function()
+          require("telescope.builtin")["find_files"]({
+            search_dirs = { "~/.config/skhd/",
+            "~/.config/nvim/",
+            "~/.config/skhd/",
+            "~/.config/yabai/",
+            "~/.config/export_obsidian/",
+            "~/.config/alacritty/",
+            }, -- still missing the files at the root of dotfiles folder
+          })
+          -- Util.telescope("find_files", { cwd = vim.fn.stdpath("config") })
+        end,
+        desc = "Find Config File",
+      },
     },
     -- change some options
     opts = {
@@ -37,10 +54,10 @@ return {
     },
     -- finds too many things.
     -- pickers = {
-      -- find_files = {
-      --   -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-      --   find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-      -- },
+    -- find_files = {
+    --   -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+    --   find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+    -- },
     -- },
   },
 }

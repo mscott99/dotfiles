@@ -27,7 +27,7 @@ return {
   },
   {
     "mscott99/luasnip-latex-snippets.nvim",
-    enabled = false,
+    enabled = false, -- My snippets are now in my config.
     -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
     -- using treesitter.
     dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex", "nvim-treesitter" },

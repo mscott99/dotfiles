@@ -44,6 +44,10 @@ local hats = {
     tex = "boldsymbol",
   },
   {
+    trig = "bf",
+    tex = "mathbf",
+  },
+  {
     trig = "cal",
     tex = "mathcal",
   },
@@ -52,7 +56,7 @@ local hats = {
     tex = "mathrb",
   },
 }
-  
+
 local map = require("snippet.utils").map
 
 return function(is_math, not_math)

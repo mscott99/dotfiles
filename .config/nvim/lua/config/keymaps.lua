@@ -15,6 +15,9 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
+-- Delete current files
+
+map("n", "<leader>fd", "<cmd>call delete(expand('%')) | bdelete!<CR>", {desc = "[F]ile [D]elete"})
 
 -- Some primagen shortcuts
 map({ "n", "x", "v" }, "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Go to another tmux place." })
