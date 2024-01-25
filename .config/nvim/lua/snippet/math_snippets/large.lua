@@ -25,7 +25,7 @@ return function(is_math, not_math)
     ),
     s(
       { trig = "nal", wordTrig = true, name = "next align", describe = "[F]irst [Al]ign", condition = is_math, snippettype= "autosnippet"},
-      { t(" &"), i(1, "="), t(" "), d(2, get_prev_align_line ), t("\\\\")}
+      { t(" &"), i(1, "="), t(" "), d(2, get_prev_align_line ), i(3), t("\\\\")}
     ),
     s(
       { trig = "int", wordTrig = true, name = "integral", condition = is_math },

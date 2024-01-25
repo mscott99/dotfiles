@@ -14,7 +14,7 @@ end
 
 -- Make function grab the code on the previous line
 -- We do this to automate copy-pasting in align environments in latex
--- Do not include the first word starting with &, and do not include the last "\\" at the end of the line.
+  -- Do not include the first word starting with &, and do not include the last "\\" at the end of the line.
 -- check that the previous line is not the start of the align environment
 
 function M.get_prev_align_line(args, parent)
@@ -22,20 +22,33 @@ function M.get_prev_align_line(args, parent)
   local row = vim.api.nvim_win_get_cursor(0)[1] - 2
   local line = vim.api.nvim_buf_get_lines(buf, row, row + 1, false)[1]
 
-  -- Check if the line is the start of the align environment
+  -- Check if the line is the start of the align or align* environment
   if line:match("\\begin{align%*?}") then
     return sn(nil, i(1, ""))
   end
 
-  local start, last = line:find("&[^&]*\\\\")
-  if start and last then
-    local command_end = line:find("%s", start)
-    local code = line:sub(command_end + 1, last - 2)
-    return sn(nil, i(1, code))
-  else
-    return sn(nil, i(1, ""))
+  local start, stop = 1, #line  -- Initialize stop at the end of the line
+
+  -- Update start if line starts with '&'
+  local ampersand_pos = line:find("&")
+  if ampersand_pos then
+    -- Find the end of the first word/command after '&'
+    local command_end = line:find("%s", ampersand_pos)
+    if command_end then
+      start = command_end + 1
+    end
   end
+
+  -- Update stop if line ends with '\\'
+  local backslash_pos = line:find("\\\\%s*$")
+  if backslash_pos then
+    stop = backslash_pos - 1
+  end
+
+  local code = line:sub(start, stop)
+  return sn(nil, i(1, code))
 end
+
 
 function M.map(tbl, f)
   local t = {}

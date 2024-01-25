@@ -19,7 +19,8 @@ alt - k : yabai -m window --focus north
 #
 # # rotate layout clockwise
 #
-# used by reply all in mail. shift + cmd - r : yabai -m space --rotate 270
+# used by reply all in mail.  (shift + cmd - r)
+ctrl + cmd - j : yabai -m space --rotate 270
 #
 # # flip along y-axis
 shift + cmd - y : yabai -m space --mirror x-axis
@@ -48,7 +49,7 @@ shift + cmd - h : yabai -m window --swap west
 # used by mail toggle flag: shift + cmd - l : yabai -m window --swap east
 #
 # # move window and split
-ctrl + cmd - j : yabai -m window --warp south
+# ctrl + cmd - j : yabai -m window --warp south
 ctrl + cmd - k : yabai -m window --warp north
 ctrl + cmd - h : yabai -m window --warp west
 ctrl + cmd - l : yabai -m window --warp east
