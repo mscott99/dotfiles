@@ -1,9 +1,0 @@
-window:
-  opacity: 1.0
-font:
-  size: 20
-# shell:
-#   program: /opt/homebrew/bin/tmux # <- set this to the path of your tmux installation
-#   args:
-#     - new-session
-#     - -A

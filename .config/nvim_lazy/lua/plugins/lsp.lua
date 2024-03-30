@@ -98,14 +98,14 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-        ---@type table<string, conform.FormatterUnit[]>
-        formatters_by_ft = {
-          lua = { "stylua" },
-          fish = { "fish_indent" },
-          sh = { "shfmt" },
-          tex = { "latexindent" },
-          bib = { "latexindent" }
-        },
+      ---@type table<string, conform.FormatterUnit[]>
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+        tex = { "latexindent" },
+        bib = { "latexindent" },
+      },
     },
   },
 }

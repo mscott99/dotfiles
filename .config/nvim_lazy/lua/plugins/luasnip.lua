@@ -13,7 +13,9 @@ return {
         link_children = true, --autosnippets do not expand withing snippets
         store_selection_keys = "<Tab>",
       })
-      vim.cmd([[sunmap n]])
+      -- this caused an error for some reason
+      -- vim.cmd([[sunmap n]])
+
       -- improvement; load math snippets for the right file types.
       -- load_ft_func = function(bufnr)
       --   if bufnr == "markdown" then

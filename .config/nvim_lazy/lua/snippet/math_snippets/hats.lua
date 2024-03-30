@@ -36,7 +36,7 @@ local hats = {
   },
   {
     trig = "bm",
-    tex = "bm",
+    tex = "mathbbm",
   },
   {
     trig = "tt",
@@ -45,6 +45,10 @@ local hats = {
   {
     trig = "bb",
     tex = "mathbb",
+  },
+  {
+    trig = "br",
+    tex = "mathbr",
   },
   {
     trig = "bs",

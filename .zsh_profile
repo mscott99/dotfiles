@@ -30,3 +30,6 @@ fi
 
 alias ls="lsd"
 export CC_BASE=/home/mscott99
+
+# choose nvim config
+export NVIM_APPNAME=kickstarted_nvim

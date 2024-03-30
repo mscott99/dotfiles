@@ -115,6 +115,7 @@ return {
             { name = "path" },
             { name = "copilot" },
             { name = "emoji" },
+            { name = "otter" },
           }
           --       , {
           --   { name = "buffer" },

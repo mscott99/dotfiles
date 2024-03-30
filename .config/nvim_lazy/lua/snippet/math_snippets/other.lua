@@ -13,14 +13,10 @@ local rep = require("luasnip.extras").rep
 
 return function(is_math, not_math)
   return {
-    s(
-      { trig = "Rn", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
-      { t("\\mathbb{R}^n") }
-    ),
-    s(
-      { trig = "Rk", condition = is_math, wordTrig = true, snippetType = "autosnippet" },
-      { t("\\mathbb{R}^k") }
-    ),
+    s({ trig = "Bo", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("B_\\infty") }),
+    s({ trig = "Rn", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\mathbb{R}^n") }),
+    s({ trig = "En", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\mathbf{E}^n") }),
+    s({ trig = "Rk", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\mathbb{R}^k") }),
     s(
       { trig = "iff", condition = is_math, wordTrig = true, priority = 1100, snippetType = "autosnippet" },
       { t("\\iff") }
@@ -49,12 +45,21 @@ return function(is_math, not_math)
     s({ trig = "geq", condition = is_math, wordTrig = true, snippetType = "autosnippet" }, { t("\\ge") }),
     s({ trig = [[__]], wordTrig = false, condition = is_math, snippetType = "autosnippet" }, fmta("_{<>}", { i(1) })),
     s({ trig = "^^", wordTrig = false, condition = is_math, snippetType = "autosnippet" }, fmta("^{<>}", { i(1) })),
-    s({ trig = "ldot", wordTrig = false, prority = 1000,  condition = is_math, snippetType = "autosnippet" }, { t("\\ldots") }),
+    s(
+      { trig = "ldot", wordTrig = false, prority = 1000, condition = is_math, snippetType = "autosnippet" },
+      { t("\\ldots") }
+    ),
     s({ trig = "dot", wordTrig = false, condition = is_math, snippetType = "autosnippet" }, { t("\\cdot") }),
 
     s({ trig = "sq", priority = 900, condition = is_math, snippetType = "autosnippet" }, fmta("\\sqrt{<>}", { i(1) })),
     s(
-      { trig = [[([^ %[({\<'%$])sq]], regTrig = true, wordTrig = false, condition = is_math, snippetType = "autosnippet" },
+      {
+        trig = [[([^ %[({\<'%$])sq]],
+        regTrig = true,
+        wordTrig = false,
+        condition = is_math,
+        snippetType = "autosnippet",
+      },
       { f(function(_, snip)
         return snip.captures[1] .. "^2"
       end) }
@@ -66,25 +71,28 @@ return function(is_math, not_math)
         return snip.captures[1] .. "^3"
       end) }
     ), -- make another one for letters where it is a wordTrig.
-    s(
-      {
-        trig = "([^ %=-+_&$./^,%d{([]+)([%d])",
-        regTrig = true,
-        priority = 300,
-        condition = is_math,
-        snippetType = "autosnippet",
-      },
-      { f(function(_, snip)
-        return snip.captures[1] .. "_" .. snip.captures[2]
-      end) }
-    ),
+    s({
+      trig = "([^ %=-+_&$./^,%d{([]+)([%d])",
+      regTrig = true,
+      priority = 300,
+      condition = is_math,
+      snippetType = "autosnippet",
+    }, { f(function(_, snip)
+      return snip.captures[1] .. "_" .. snip.captures[2]
+    end) }),
     -- s({trig = "([^ ij%d%p{([])([ijm])", regTrig=true, priority = 300, condition= is_math, snippetType="autosnippet"},
     --     {f(function(_, snip)
     --       return snip.captures[1] .. "_" .. snip.captures[2]
     --     end),}
     -- ),
     s(
-      { trig = "([^ %d%p{([]+)([*T])", regTrig = true, priority = 300, condition = is_math, snippetType = "autosnippet" },
+      {
+        trig = "([^ %d%p{([]+)([*T])",
+        regTrig = true,
+        priority = 300,
+        condition = is_math,
+        snippetType = "autosnippet",
+      },
       { f(function(_, snip)
         return snip.captures[1] .. "^" .. snip.captures[2]
       end) }

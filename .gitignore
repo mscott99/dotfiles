@@ -22,3 +22,7 @@
 .config/github-copilot
 .config/configstore
 .config/raycast/extensions
+.vscode
+.venv
+QuestPacher
+.config/QuestPatcher

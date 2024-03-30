@@ -1,0 +1,10 @@
+[font]
+size = 17
+
+[window]
+opacity = 1.0
+
+[keyboard]
+bindings = [
+    { key= 'F', mods= 'Command', action= "None"}
+]

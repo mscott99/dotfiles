@@ -40,6 +40,10 @@ return function(is_math, not_math)
       fmta("\\mathbb{<>}", { d(1, get_visual) })
     ),
     s(
+      { trig = "mbr", priority = 1100, condition = is_math, snippetType = "autosnippet" },
+      fmta("\\mathbr{<>}", { d(1, get_visual) })
+    ),
+    s(
       { trig = "mcal", priority = 1100, condition = is_math, snippetType = "autosnippet" },
       fmta("\\mathcal{<>}", { d(1, get_visual) })
     ),
