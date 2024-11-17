@@ -58,6 +58,16 @@ shift + cmd - h : yabai -m window --swap west
 ctrl + cmd - k : yabai -m window --warp north
 ctrl + cmd - h : yabai -m window --warp west
 ctrl + cmd - l : yabai -m window --warp east
+
+ctrl + shift - q : yabai -m space --focus 1
+ctrl + shift - w : /Users/matthewscott/Prog/dotfiles/.config/yabai/window_switcher.sh "Alacritty"
+ctrl + shift - e : /Users/matthewscott/Prog/dotfiles/.config/yabai/window_switcher.sh "Brave Browser"
+ctrl + shift - r : /Users/matthewscott/Prog/dotfiles/.config/yabai/window_switcher.sh "Obsidian"
+ctrl + shift - d : yabai -m space --focus 2
+ctrl + shift - f : /Users/matthewscott/Prog/dotfiles/.config/yabai/window_switcher.sh "Telegram"
+ctrl + shift - u : yabai -m space --focus 3
+ctrl + shift - i : yabai -m space --focus 4
+ctrl + shift - o : yabai -m space --focus 5
 #
 # # move window to display left and right
 # shift + alt - s : yabai -m window --display west; yabai -m display --focus west;

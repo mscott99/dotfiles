@@ -1,9 +1,19 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 # bsp, stack or float
 yabai -m config layout bsp
 
 yabai -m config window_placement second_child
 
-# padding
+# Kill any existing cache process first
+pkill -f "/Users/matthewscott/Prog/dotfiles/.config/yabai/cache_windows.sh"
+# Launch cache script in background with nohup to keep it running after terminal closes
+nohup /Users/matthewscott/Prog/dotfiles/.config/yabai/cache_windows.sh >/dev/null 2>&1 &
+
+yabai -m rule --add app='^Alacritty$' manage=on native-fullscreen=on
+yabai -m rule --add app='^Obsidian$' manage=on native-fullscreen=on
+yabai -m rule --add app='^Brave$' manage=on native-fullscreen=on
+yabai -m rule --add app='^Telegram$' manage=on native-fullscreen=on
 
 yabai -m config top_padding -2
 yabai -m config bottom_padding 0
