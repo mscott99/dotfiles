@@ -22,7 +22,7 @@
 	name = Matthew Scott
 	email = m.valckescott@gmail.com
 [core]
-	excludesFile = ~/.gitignore
+	excludesfile = /Users/matthewscott/.gitignore
 	editor = nvim
 [pull]
 	rebase = true

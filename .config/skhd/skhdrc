@@ -41,7 +41,9 @@ shift + cmd - m : yabai -m window --toggle zoom-fullscreen
 shift + cmd - e : yabai -m space --balance
 # grow window
 
-shift + cmd - g : yabai -m window --resize right +5
+shift + cmd - g : yabai -m window --resize right +5; yabai -m window --resize left +5; yabai -m window --resize top +5; yabai -m window --resize bottom +5
+
+
 #
 # # -- Moving Windows Around --
 #

@@ -1,6 +1,7 @@
 .DS_Store
 *.icloud
 *.swp
+*.thm
 
 # Latex builds
 *.eps

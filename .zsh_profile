@@ -19,8 +19,20 @@ alias pip=pip3
 
 export CC_HOME=/home/mscott99/projects/def-oyilmaz/mscott99
 
+alias mount_cchome="sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias mounth="sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias mount_ccscratch="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+alias mounts="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+alias umount_cchome="umount /Users/matthewscott/Prog/serverhome"
+alias umounth="umount /Users/matthewscott/Prog/serverhome"
+alias umount_ccscratch="umount /Users/matthewscott/Prog/ccscratch"
+alias umounts="umount /Users/matthewscott/Prog/ccscratch"
+
+
 # Good colors in tmux
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+export OBSIDIAN_REST_API_KEY=f1e7c9ff91c38fabf591320ba5db5d8aaa9795356842ea71cb4ec78550c685a1
 
 # start tmux right away
 if [[ -z "$TMUX" ]]
@@ -32,4 +44,24 @@ alias ls="lsd"
 export CC_BASE=/home/mscott99
 
 # choose nvim config
-export NVIM_APPNAME=kickstarted_nvim
+export NVIM_APPNAME=my_nvim
+
+source <(fzf --zsh)
+
+export PYTHONPATH=$PYTHONPATH:"/Users/matthewscott/Prog/utils/:./deps"
+
+alias launch="source ./venv/bin/activate"
+
+# bindkey '^R' fzf-history-search
+#
+# fzf-history-search() {
+#     local selected_command
+#     selected_command=$(history -n 1 | fzf --height 40% --layout=reverse --query="$LBUFFER")
+#     if [[ -n $selected_command ]]; then
+#         BUFFER="$selected_command"
+#         CURSOR=${#BUFFER}
+#     fi
+#     zle -R -c
+# }
+#
+# zle -N fzf-history-search
