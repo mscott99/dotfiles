@@ -1,0 +1,16 @@
+set imap_user = "m.valckescott@gmail.com"
+set imap_pass = `pass email/m.valckescott@gmail.com`
+set smtp_url = "smtp://m.valckescott@gmail.com@smtp.gmail.com:587/"
+set smtp_pass = `pass email/m.valckescott@gmail.com`
+set from = "m.valckescott@gmail.com"
+set realname = "Matthew S. Scott"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+set header_cache = "~/.cache/mutt"
+set message_cachedir = "~/.cache/mutt"
+set ssl_force_tls = yes
+set imap_authenticators = "oauthbearer"
+set imap_oauth_refresh_command = "/path/to/oauth2.py --user=m.valckescott@gmail.com --client_id=your_client_id --client_secret=your_client_secret --refresh_token=your_refresh_token"

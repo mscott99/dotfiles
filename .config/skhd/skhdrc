@@ -35,7 +35,7 @@ shift + cmd - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # # -- Modifying Window Size --
 #
 # # maximize a window
-shift + cmd - m : yabai -m window --toggle zoom-fullscreen
+shift + cmd - m : yabai -m window --toggle native-fullscreen
 #
 # # balance out tree of windows (resize to occupy same area)
 shift + cmd - e : yabai -m space --balance
@@ -68,26 +68,16 @@ ctrl + shift - f : /Users/matthewscott/Prog/dotfiles/.config/yabai/window_switch
 ctrl + shift - u : yabai -m space --focus 3
 ctrl + shift - i : yabai -m space --focus 4
 ctrl + shift - o : yabai -m space --focus 5
-#
-# # move window to display left and right
-# shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
-# shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
-#
-#
-# # move window to prev and next space
-# shift + cmd - p : yabai -m window --space prev;
-# shift + cmd - n : yabai -m window --space next;
-#
-# # move window to space #
+# move window to space
 ctrl + cmd - q : yabai -m window --space 1;
-ctrl + cmd - w : yabai -m window --space 2;
-ctrl + cmd - e : yabai -m window --space 3;
-ctrl + cmd - r : yabai -m window --space 4;
-ctrl + cmd - d : yabai -m window --space 5;
-ctrl + cmd - f : yabai -m window --space 6;
-ctrl + cmd - u : yabai -m window --space 7;
-ctrl + cmd - i : yabai -m window --space 8;
-ctrl + cmd - o : yabai -m window --space 9;
+# ctrl + cmd - w : yabai -m window --space 2;
+# ctrl + cmd - e : yabai -m window --space 3;
+# ctrl + cmd - r : yabai -m window --space 4;
+ctrl + cmd - d : yabai -m window --space 2;
+# ctrl + cmd - f : yabai -m window --space 6;
+ctrl + cmd - u : yabai -m window --space 3;
+ctrl + cmd - i : yabai -m window --space 4;
+ctrl + cmd - o : yabai -m window --space 5;
 #
 # # -- Starting/Stopping/Restarting Yabai --
 #

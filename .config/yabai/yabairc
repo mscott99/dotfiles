@@ -8,6 +8,7 @@ yabai -m config window_placement second_child
 # Kill any existing cache process first
 pkill -f "/Users/matthewscott/Prog/dotfiles/.config/yabai/cache_windows.sh"
 # Launch cache script in background with nohup to keep it running after terminal closes
+# There seems to be a bug where full-screen apps are not accessible until visited.
 nohup /Users/matthewscott/Prog/dotfiles/.config/yabai/cache_windows.sh >/dev/null 2>&1 &
 
 yabai -m rule --add app='^Alacritty$' manage=on native-fullscreen=on

@@ -17,17 +17,32 @@ alias ssh_wsl_public="ssh -t ngan_public $WSL_COMMAND"
 alias python=python3
 alias pip=pip3
 
+alias release_plugin="/Users/matthewscott/.local/bin/increment_latex_version.sh"
+
 export CC_HOME=/home/mscott99/projects/def-oyilmaz/mscott99
 
-alias mount_cchome="sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
-alias mounth="sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
-alias mount_ccscratch="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
-alias mounts="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
-alias umount_cchome="umount /Users/matthewscott/Prog/serverhome"
-alias umounth="umount /Users/matthewscott/Prog/serverhome"
-alias umount_ccscratch="umount /Users/matthewscott/Prog/ccscratch"
-alias umounts="umount /Users/matthewscott/Prog/ccscratch"
+alias get_cc_df="ssh cc /home/mscott99/projects/def-oyilmaz/mscott99/cc_server_scripts/grab_from_server.sh | /Users/matthewscott/Prog/server_scripts/pipe_to_file.sh"
+alias launchcc="ssh cc '/home/mscott99/projects/def-oyilmaz/mscott99/cc_server_scripts/run_sparse_exp_from_server.sh'"
+alias get_cc_dfn="ssh ccn /home/mscott99/projects/def-oyilmaz/mscott99/cc_server_scripts/grab_from_server.sh | /Users/matthewscott/Prog/server_scripts/pipe_to_file.sh"
+alias launchccn="ssh ccn 'nohup /home/mscott99/projects/def-oyilmaz/mscott99/cc_server_scripts/run_sparse_exp_from_server.sh > /dev/null 2>&1 &'"
 
+alias rmh="umount /Users/matthewscott/Prog/cchome;sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias mh="sshfs -o volname=cchome,defer_permissions cc:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias rms="umount /Users/matthewscott/Prog/ccscratch;sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+alias ms="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+
+alias rmhn="umount /Users/matthewscott/Prog/cchome;sshfs -o volname=cchome,defer_permissions ccn:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias mhn="sshfs -o volname=cchome,defer_permissions ccn:$CC_HOME /Users/matthewscott/Prog/cchome"
+alias rmsn="umount /Users/matthewscott/Prog/ccscratch;sshfs -o volname=ccscratch,defer_permissions ccn:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+alias msn="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+
+# alias ms="if ! mountpoint -q '/Users/matthewscott/Prog/ccscratch'; then
+# umount /Users/matthewscott/Prog/ccscratch;fi;sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch;cd /Users/matthewscott/Prog/ccscratch"
+# alias mounts="sshfs -o volname=ccscratch,defer_permissions cc:/home/mscott99/scratch/sweep_out /Users/matthewscott/Prog/ccscratch"
+# alias umount_cchome="umount /Users/matthewscott/Prog/serverhome"
+# alias umounth="umount /Users/matthewscott/Prog/serverhome"
+# alias umount_ccscratch="umount /Users/matthewscott/Prog/ccscratch"
+# alias umounts="umount /Users/matthewscott/Prog/ccscratch"
 
 # Good colors in tmux
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
@@ -48,9 +63,9 @@ export NVIM_APPNAME=my_nvim
 
 source <(fzf --zsh)
 
-export PYTHONPATH=$PYTHONPATH:"/Users/matthewscott/Prog/utils/:./deps"
+export PYTHONPATH=$PYTHONPATH:"/Users/matthewscott/Prog/utils/:./deps:/Users/matthewscott/Prog/Sparse_adapted_denoising"
 
-alias launch="source ./venv/bin/activate"
+alias launch="source ./.venv/bin/activate"
 
 # bindkey '^R' fzf-history-search
 #
