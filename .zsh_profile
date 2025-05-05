@@ -1,6 +1,14 @@
 bindkey -v
 bindkey -s ^f "tmux-sessionizer\n"
 
+# History search based on typed prefix for Up/Down arrows (using terminfo)
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search   # Up arrow
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search # Down arrow
+
 eval "$(zoxide init --cmd cd zsh)"
 
 addToPathFront() {
@@ -61,9 +69,9 @@ export CC_BASE=/home/mscott99
 # choose nvim config
 export NVIM_APPNAME=my_nvim
 
-source <(fzf --zsh)
+#source <(fzf --zsh)
 
-export PYTHONPATH=$PYTHONPATH:"/Users/matthewscott/Prog/utils/:./deps:/Users/matthewscott/Prog/Sparse_adapted_denoising"
+export PYTHONPATH=$PYTHONPATH:"/home/matthew/Prog/utils/:./deps:/home/matthew/Prog/Sparse_adapted_denoising"
 
 alias launch="source ./.venv/bin/activate"
 
